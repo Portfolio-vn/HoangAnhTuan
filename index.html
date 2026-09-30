@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="vi" data-theme="light" data-key="hat2" data-title-vi="Hoàng Anh Tuấn — Portfolio" data-title-en="Tuan A. Hoang — Portfolio">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hoàng Anh Tuấn — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>(function(){try{var r=document.documentElement,k=r.dataset.key,t=localStorage.getItem(k+'-theme'),l=localStorage.getItem(k+'-lang');if(t)r.dataset.theme=t;if(l)r.lang=l}catch(e){}})();</script>
+<style>
+/* ===== shared kit styles ===== */
+html[lang="vi"] [data-en],html[lang="en"] [data-vi]{display:none!important}
+[data-lb]{cursor:zoom-in}
+#lb{position:fixed;inset:0;z-index:300;background:rgba(6,8,12,.94);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;padding:56px 64px}
+#lb.open{opacity:1;visibility:visible}
+#lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%;max-height:100%}
+#lb img{max-width:min(1200px,100%);max-height:calc(100vh - 150px);object-fit:contain;border-radius:8px;transform:scale(.96);transition:transform .45s cubic-bezier(.22,1,.36,1);box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+#lb.open img{transform:none}
+#lb figcaption{color:#e8e8e8;font-size:14px;text-align:center;max-width:720px}
+#lb button{position:absolute;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;border:0;font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .2s}
+#lb button:hover{background:rgba(255,255,255,.22)}
+#lb .lb-x{top:14px;right:14px}#lb .lb-p{left:12px;top:50%;transform:translateY(-50%)}#lb .lb-n{right:12px;top:50%;transform:translateY(-50%)}
+#lb .lb-c{position:absolute;top:24px;left:20px;color:#aaa;font:12px/1 monospace}
+@media (max-width:640px){#lb{padding:56px 8px}#lb .lb-p,#lb .lb-n{top:auto;bottom:14px;transform:none}}
+.hide{display:none!important}
+/* toggles */
+.pf-tools{display:flex;align-items:center;gap:8px}
+.pf-seg{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--seg-bg,transparent)}
+.pf-seg button{font:500 11.5px/1 var(--mono,monospace);padding:6px 9px;border-radius:999px;border:0;background:none;color:var(--muted);cursor:pointer;transition:background .25s,color .25s}
+.pf-seg button.on{background:var(--seg-on,var(--ink));color:var(--seg-on-ink,var(--bg))}
+.pf-ico{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--seg-bg,transparent);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:transform .35s}
+.pf-ico:hover{transform:rotate(20deg)}
+.pf-ico svg{width:17px;height:17px}
+.pf-ico .i-moon{display:none}
+:root[data-theme="dark"] .pf-ico .i-sun{display:none}:root[data-theme="dark"] .pf-ico .i-moon{display:block}
+.pf-cv{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.pf-cv svg{width:15px;height:15px}
+/* photo helpers */
+.shots{display:grid;gap:10px}
+.shots img{width:100%;height:100%;object-fit:cover;display:block}
+.cert-strip{display:flex;gap:10px;overflow-x:auto;padding:4px 0 10px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.cert-strip img{height:130px;width:auto;flex:none;scroll-snap-align:start;border-radius:6px;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s}
+.cert-strip img:hover{transform:translateY(-4px)}
+.masonry{columns:4 220px;column-gap:12px}
+.masonry figure{break-inside:avoid;margin:0 0 12px;overflow:hidden;position:relative}
+.masonry img{width:100%;height:auto;display:block;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.masonry figure:hover img{transform:scale(1.04)}
+
+#lb.single .lb-p,#lb.single .lb-n,#lb.single .lb-c{display:none}
+
+:root{
+  --bg:#f3eee2;--bg2:#e9e2d1;--card:#faf7ef;--ink:#1c2b22;--ink2:#34463a;--muted:#6f7a6c;--line:#d6cdb7;
+  --forest:#1f3b2c;--husk:#b5652b;--sage:#7d9a6f;--cream:#f3eee2;--leaf:#4f7a3a;
+  --seg-bg:#faf7ef;--seg-on:#1f3b2c;--seg-on-ink:#f3eee2;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Be Vietnam Pro',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--ease:cubic-bezier(.76,0,.24,1);--ease2:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#11170f;--bg2:#182017;--card:#1b241a;--ink:#ece6d6;--ink2:#cfc8b6;--muted:#9aa190;--line:#2c382a;
+  --forest:#b9d6a0;--husk:#e08a4c;--sage:#9dbb8c;--leaf:#a4cf85;
+  --seg-bg:#1b241a;--seg-on:#b9d6a0;--seg-on-ink:#11170f;color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .6s,color .6s}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+::selection{background:var(--husk);color:#fff}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:200;background:#1f3b2c;color:#f3eee2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:transform 1.1s var(--ease)}
+#loader.done{transform:translateY(-100%)}
+#loader svg{width:120px;height:120px}
+#loader .ring{stroke-dasharray:340;stroke-dashoffset:340}
+#loader .w{font-family:var(--serif);font-size:30px;font-style:italic}
+#loader .n{font-family:var(--mono);font-size:11px;letter-spacing:.3em;opacity:.7}
+
+/* side nav */
+.side{position:fixed;left:0;top:0;bottom:0;width:230px;z-index:50;border-right:1px solid var(--line);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);display:flex;flex-direction:column;padding:28px 22px}
+.side .brand{font-family:var(--serif);font-size:26px;line-height:1.05}
+.side .brand em{color:var(--husk)}
+.side .vol{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--muted);margin:10px 0 28px;text-transform:uppercase}
+.toc{list-style:none;display:flex;flex-direction:column;gap:2px;counter-reset:t}
+.toc a{display:flex;gap:12px;align-items:baseline;padding:7px 0;font-size:14px;color:var(--muted);position:relative;transition:color .3s,padding .4s var(--ease2)}
+.toc a::before{counter-increment:t;content:counter(t,decimal-leading-zero);font-family:var(--mono);font-size:10px;color:var(--husk)}
+.toc a:hover{color:var(--ink);padding-left:6px}
+.toc a.active{color:var(--ink);font-weight:600}
+.toc a.active::after{content:"";position:absolute;left:-22px;top:50%;width:14px;height:2px;background:var(--husk)}
+.side .foot{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+.side .cvbtn{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px;border-radius:999px;background:var(--forest);color:var(--bg);font-size:13px;font-weight:600;transition:transform .4s var(--ease2)}
+.side .cvbtn:hover{transform:translateY(-2px)}
+.side .cvbtn svg{width:15px;height:15px}
+.side .meter{height:2px;background:var(--line);border-radius:2px;overflow:hidden}.side .meter i{display:block;height:100%;width:0;background:var(--husk)}
+.topbar{display:none}
+main{margin-left:230px}
+
+section{padding:clamp(80px,10vw,130px) clamp(20px,5vw,80px);max-width:1180px;position:relative}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--husk);display:flex;gap:14px;align-items:center;margin-bottom:22px}
+.kicker b{font-weight:400;color:var(--muted)}
+.kicker::after{content:"";flex:0 0 60px;height:1px;background:currentColor}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.4vw,72px);line-height:1.02;letter-spacing:-.01em;margin-bottom:26px}
+h2 em{color:var(--husk)}
+.lede{font-size:18px;color:var(--ink2);max-width:640px}
+
+/* line reveal & curtain */
+.ln{display:block;overflow:hidden}.ln>span{display:block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.in .ln>span,.ln.in>span{transform:none}
+.in .ln:nth-child(2)>span{transition-delay:.08s}.in .ln:nth-child(3)>span{transition-delay:.16s}
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease2),transform 1s var(--ease2)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s!important}.d2{transition-delay:.2s!important}.d3{transition-delay:.3s!important}
+.curtain{position:relative;overflow:hidden}
+.curtain::after{content:"";position:absolute;inset:0;background:var(--forest);transform-origin:right;transition:transform 1.2s var(--ease)}
+.curtain.in::after{transform:scaleX(0)}
+.curtain img{transform:scale(1.2);transition:transform 1.8s var(--ease2)}
+.curtain.in img{transform:scale(1)}
+
+/* hero */
+#hero{min-height:100vh;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding-top:60px;max-width:none}
+.issue{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;display:flex;gap:18px;flex-wrap:wrap;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:10px 0;margin-bottom:34px}
+.issue span:first-child{color:var(--ink);font-weight:700}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,8.4vw,128px);line-height:.92;letter-spacing:-.02em}
+h1 em{color:var(--husk)}
+.deck{font-size:clamp(17px,1.5vw,20px);color:var(--ink2);max-width:520px;margin-top:28px}
+.deck b{color:var(--ink);font-weight:600}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid var(--forest);position:relative;overflow:hidden;isolation:isolate;transition:color .5s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--forest);z-index:-1;transform:translateY(0);transition:transform .5s var(--ease)}
+.btn.fill{color:var(--bg)}.btn.fill:hover::before{transform:translateY(-100%)}.btn.fill:hover{color:var(--forest)}
+.btn.line{color:var(--forest)}.btn.line::before{transform:translateY(100%)}.btn.line:hover::before{transform:none}.btn.line:hover{color:var(--bg)}
+.btn svg{width:16px;height:16px}
+.hero-art{position:relative;aspect-ratio:1;max-width:540px;width:100%;justify-self:center}
+.loop{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.loop .track{stroke-dasharray:1100;stroke-dashoffset:1100;transition:stroke-dashoffset 2.4s var(--ease)}
+.hero-art.in .loop .track{stroke-dashoffset:0}
+.loop .spin{transform-origin:270px 270px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loop .node{opacity:0;transition:opacity .6s}
+.hero-art.in .loop .node{opacity:1}
+.loop text{font-family:var(--mono);font-size:12px;letter-spacing:.12em;fill:var(--ink);text-transform:uppercase}
+.arch{position:absolute;left:50%;top:50%;width:46%;aspect-ratio:3/4;transform:translate(-50%,-50%);border-radius:999px 999px 18px 18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(31,59,44,.6)}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.stamp{position:absolute;right:2%;bottom:6%;width:120px;height:120px;border-radius:50%;background:var(--husk);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--serif);line-height:1;box-shadow:0 14px 30px -12px rgba(181,101,43,.7);animation:bob 5s ease-in-out infinite}
+.stamp b{display:block;font-size:34px;font-weight:400}.stamp span{font-family:var(--mono);font-size:9px;letter-spacing:.14em}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-6deg)}}
+
+/* marquee */
+.marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:18px 0;margin-left:0}
+.marq .tr{display:inline-flex;gap:56px;animation:mq 38s linear infinite;font-family:var(--serif);font-size:clamp(24px,3vw,38px);font-style:italic;color:var(--forest)}
+.marq .tr span::after{content:"✺";margin-left:56px;color:var(--husk);font-style:normal;font-size:.7em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* abstract */
+.abstract{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:start}
+.dropcap::first-letter{font-family:var(--serif);float:left;font-size:92px;line-height:.8;padding:8px 12px 0 0;color:var(--husk)}
+.abstract p{font-size:17px;color:var(--ink2);margin-bottom:16px}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.figs div{background:var(--bg);padding:24px 20px;transition:background .4s}
+.figs div:hover{background:var(--card)}
+.figs b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(38px,4vw,54px);line-height:1;color:var(--forest)}
+.figs b small{font-size:.4em;font-family:var(--mono);color:var(--husk);margin-left:4px}
+.figs span{font-size:13px;color:var(--muted)}
+
+/* project */
+.proj-intro{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:end;margin-bottom:40px}
+.strip-wrap{margin:0 calc(-1*clamp(20px,5vw,80px));padding:0 clamp(20px,5vw,80px)}
+.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;scrollbar-width:thin;cursor:grab}
+.strip figure{flex:0 0 clamp(260px,34vw,440px);scroll-snap-align:start;position:relative}
+.strip figure .curtain{aspect-ratio:4/3;border-radius:14px}
+.strip figure img{width:100%;height:100%;object-fit:cover}
+.strip figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:10px;display:flex;gap:10px}
+.strip figcaption b{color:var(--husk);font-weight:400}
+.hint{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:4px}
+.mech{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:56px 0;border-top:1px solid var(--ink)}
+.mech div{padding:22px 20px 0 0;border-right:1px solid var(--line);padding-left:20px}
+.mech div:first-child{padding-left:0}.mech div:last-child{border-right:0}
+.mech .n{font-family:var(--serif);font-size:44px;color:var(--husk);line-height:1}
+.mech h4{font-size:17px;font-weight:700;margin:8px 0 6px}
+.mech p{font-size:14px;color:var(--muted)}
+.mech .tag{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:11px;padding:3px 9px;border:1px solid var(--line);border-radius:999px;color:var(--forest)}
+.results{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:start}
+.hbars{display:flex;flex-direction:column;gap:14px}
+.hb{display:grid;grid-template-columns:170px 1fr 56px;gap:14px;align-items:center;font-size:14px}
+.hb .lab{color:var(--ink2)}
+.hb .tr{height:26px;background:var(--bg2);border-radius:999px;overflow:hidden}
+.hb .tr i{display:block;height:100%;width:0;border-radius:999px;background:color-mix(in srgb,var(--sage) 70%,var(--bg2));transition:width 1.6s var(--ease)}
+.hb.top .tr i{background:linear-gradient(90deg,var(--leaf),var(--husk))}
+.hb .v{font-family:var(--mono);font-size:13px;text-align:right}
+.hb.top .v{color:var(--husk);font-weight:700}
+.figcap{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:18px;border-top:1px solid var(--line);padding-top:10px}
+.figcap b{color:var(--ink)}
+.poster{border-radius:14px;overflow:hidden;border:1px solid var(--line);transform:rotate(2deg);transition:transform .6s var(--ease2);box-shadow:0 30px 50px -30px rgba(0,0,0,.4)}
+.poster:hover{transform:rotate(0) scale(1.02)}
+
+/* research */
+.refs{border-top:1px solid var(--ink);margin-top:20px}
+.ref{display:grid;grid-template-columns:70px 1fr 150px;gap:28px;padding:34px 0;border-bottom:1px solid var(--line);align-items:start;transition:background .4s}
+.ref:hover{background:color-mix(in srgb,var(--card) 70%,transparent)}
+.ref .no{font-family:var(--serif);font-size:48px;color:var(--husk);line-height:1}
+.ref .j{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.ref h3{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.3vw,30px);line-height:1.2;margin-bottom:12px}
+.ref p{font-size:15px;color:var(--ink2);max-width:640px}
+.ref .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.ref .chips span{font-family:var(--mono);font-size:11px;padding:3px 10px;border-radius:999px;background:var(--bg2);color:var(--forest)}
+.ref .doc{border:1px solid var(--line);background:#fff;transform:rotate(-2deg);transition:transform .5s var(--ease2);box-shadow:0 16px 30px -18px rgba(0,0,0,.35)}
+.ref:hover .doc{transform:rotate(0) translateY(-4px)}
+
+/* awards */
+.aw-list{border-top:1px solid var(--ink);margin-top:20px;position:relative}
+.aw{display:grid;grid-template-columns:120px 1fr 200px;gap:28px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);position:relative;cursor:zoom-in}
+.aw .yr{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.aw .medal{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:3px 10px;border-radius:999px;background:var(--husk);color:#fff;margin-bottom:10px}
+.aw .medal.grand{background:var(--forest);color:var(--bg)}
+.aw h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.8vw,38px);line-height:1.1;transition:transform .5s var(--ease2),color .3s}
+.aw:hover h3{transform:translateX(12px);color:var(--husk)}
+.aw p{font-size:14.5px;color:var(--muted);margin-top:8px;max-width:620px}
+.aw .thumbs{display:flex;gap:8px;justify-content:flex-end}
+.aw .thumbs img{width:92px;height:120px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line);transition:transform .5s var(--ease2)}
+.aw:hover .thumbs img{transform:translateY(-6px) rotate(-3deg)}
+.aw:hover .thumbs img+img{transform:translateY(-6px) rotate(3deg)}
+#peek{position:fixed;left:0;top:0;width:220px;pointer-events:none;z-index:60;opacity:0;transform:translate(-50%,-50%) scale(.8) rotate(-4deg);transition:opacity .3s,transform .4s var(--ease2);border-radius:8px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+#peek.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-4deg)}
+@media (hover:none){#peek{display:none}}
+
+/* edu + exp */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px}
+.card .k{font-family:var(--mono);font-size:11px;color:var(--husk);letter-spacing:.14em;text-transform:uppercase}
+.card h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.15;margin:8px 0 6px}
+.card .sub{font-size:14px;color:var(--muted);margin-bottom:16px}
+.big8{display:flex;align-items:center;gap:22px}
+.big8 .n{font-family:var(--serif);font-size:96px;line-height:.9;color:var(--forest)}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.skills span{font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink2)}
+.intern{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center;margin-top:30px}
+.intern .curtain{border-radius:20px;aspect-ratio:4/5}
+.intern .curtain img{width:100%;height:100%;object-fit:cover}
+.intern ul,.club ul{list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--ink2);font-size:15.5px;margin:14px 0}
+.intern li,.club li{padding-left:22px;position:relative}
+.intern li::before,.club li::before{content:"✺";position:absolute;left:0;color:var(--husk);font-size:12px;top:3px}
+.certlink{display:inline-flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:8px 14px 8px 8px;background:var(--card);transition:transform .4s var(--ease2),border-color .3s}
+.certlink:hover{transform:translateY(-3px);border-color:var(--husk)}
+.certlink img{width:74px;height:52px;object-fit:cover;border-radius:6px}
+.certlink span{font-size:13px;font-weight:600}.certlink small{display:block;font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:400}
+.club{margin-top:40px;padding:34px;border-radius:20px;background:var(--forest);color:var(--bg);display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.club .ball{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7b0,#e7d64a 55%,#b9a82a);position:relative;animation:bob 4s ease-in-out infinite}
+.club .ball::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,rgba(0,0,0,.25) 5px,transparent 6px) 0 0/28px 28px}
+.club h3{font-family:var(--serif);font-weight:400;font-size:32px}
+.club .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;opacity:.7}
+.club ul{color:color-mix(in srgb,var(--bg) 85%,transparent)}
+.club li::before{color:#e7d64a}
+
+/* community */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-top:30px}
+.story.rev .pics{order:2}
+.story .k{font-family:var(--mono);font-size:11px;color:var(--husk);letter-spacing:.14em;text-transform:uppercase}
+.story h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1;margin:10px 0 14px}
+.story p{color:var(--ink2);font-size:16px}
+.pics{position:relative;height:clamp(300px,34vw,440px)}
+.pics .a{position:absolute;left:0;top:0;width:78%;height:74%;border-radius:18px}
+.pics .b{position:absolute;right:0;bottom:0;width:46%;height:52%;border-radius:18px;border:6px solid var(--bg)}
+.pics .c{position:absolute;left:6%;bottom:-2%;width:26%;height:34%;border-radius:12px;border:5px solid var(--bg);background:var(--card)}
+.pics .curtain img,.pics img{width:100%;height:100%;object-fit:cover}
+.pics .c img{object-fit:contain}
+
+/* gallery */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{font-size:13px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.3s}
+.filters button.on{background:var(--forest);color:var(--bg);border-color:var(--forest)}
+.masonry figure{border-radius:12px}
+
+/* contact */
+#contact{text-align:left}
+.big{font-family:var(--serif);font-size:clamp(48px,9vw,140px);line-height:.9;letter-spacing:-.02em}
+.big em{color:var(--husk)}
+.mail{display:inline-block;margin-top:30px;font-family:var(--serif);font-size:clamp(22px,3vw,40px);border-bottom:2px solid var(--husk);padding-bottom:4px;word-break:break-all;transition:color .3s}
+.mail:hover{color:var(--husk)}
+footer{margin-left:230px;padding:28px clamp(20px,5vw,80px);border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media (max-width:1080px){
+  .side{display:none}main,footer{margin-left:0}
+  .topbar{display:flex;position:fixed;top:0;left:0;right:0;z-index:50;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar .brand{font-family:var(--serif);font-size:20px}.topbar .brand em{color:var(--husk)}
+  .topbar .cv{width:36px;height:36px;border-radius:50%;background:var(--forest);color:var(--bg);display:grid;place-items:center}.topbar .cv svg{width:16px;height:16px}
+  #hero{padding-top:110px}
+}
+@media (max-width:900px){
+  #hero,.abstract,.proj-intro,.results,.two,.intern,.story,.story.rev{grid-template-columns:1fr}
+  .story.rev .pics{order:0}
+  .mech{grid-template-columns:1fr 1fr}.mech div{border-right:0;padding-left:0;padding-bottom:20px}
+  .ref{grid-template-columns:50px 1fr}.ref .doc{grid-column:2;max-width:150px}
+  .aw{grid-template-columns:1fr}.aw .thumbs{justify-content:flex-start}
+  .club{grid-template-columns:1fr}
+  .hero-art{max-width:420px}
+}
+@media (max-width:560px){
+  .hb{grid-template-columns:110px 1fr 46px;font-size:12px}
+  .mech{grid-template-columns:1fr}
+  .stamp{width:90px;height:90px}.stamp b{font-size:24px}
+  .loop text{font-size:15px}
+  .topbar .pf-seg button{padding:6px 7px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.ln>span{transform:none}.curtain::after{display:none}.curtain img{transform:none}}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="54" fill="none" stroke="rgba(243,238,226,.2)" stroke-width="2"/><circle class="ring" id="lring" cx="60" cy="60" r="54" fill="none" stroke="#e08a4c" stroke-width="3" stroke-linecap="round" transform="rotate(-90 60 60)"/><path d="M60 36c10 12 16 22 16 30a16 16 0 0 1-32 0c0-8 6-18 16-30z" fill="#f3eee2"/></svg>
+  <div class="w">waste → value</div><div class="n" id="lpct">0%</div>
+</div>
+
+<aside class="side">
+  <a href="#hero" class="brand">Hoàng<br>Anh <em>Tuấn</em></a>
+  <div class="vol"><span data-vi>Hồ sơ · Tập 01 · 2026</span><span data-en>Portfolio · Vol. 01 · 2026</span></div>
+  <ol class="toc" id="toc">
+    <li><a href="#abstract"><span data-vi>Tóm tắt</span><span data-en>Abstract</span></a></li>
+    <li><a href="#project"><span data-vi>Dự án bã dừa</span><span data-en>Coconut project</span></a></li>
+    <li><a href="#research"><span data-vi>Nghiên cứu</span><span data-en>Research</span></a></li>
+    <li><a href="#awards"><span data-vi>Giải thưởng</span><span data-en>Awards</span></a></li>
+    <li><a href="#profile"><span data-vi>Học vấn &amp; kinh nghiệm</span><span data-en>Education &amp; experience</span></a></li>
+    <li><a href="#community"><span data-vi>Cộng đồng</span><span data-en>Community</span></a></li>
+    <li><a href="#gallery"><span data-vi>Thư viện ảnh</span><span data-en>Gallery</span></a></li>
+    <li><a href="#contact"><span data-vi>Liên hệ</span><span data-en>Contact</span></a></li>
+  </ol>
+  <div class="foot">
+    <div class="pf-tools"><div class="pf-seg"><button data-setlang="vi">VI</button><button data-setlang="en">EN</button></div>
+      <button class="pf-ico" data-toggle-theme aria-label="Theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div>
+    <a class="cvbtn" href="HoangAnhTuan_CV.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span data-vi>Tải CV</span><span data-en>Download CV</span></a>
+    <div class="meter"><i id="meter"></i></div>
+  </div>
+</aside>
+
+<div class="topbar">
+  <a href="#hero" class="brand">A. <em>Tuấn</em></a>
+  <div class="pf-tools"><div class="pf-seg"><button data-setlang="vi">VI</button><button data-setlang="en">EN</button></div>
+    <button class="pf-ico" data-toggle-theme aria-label="Theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    <a class="cv" href="HoangAnhTuan_CV.pdf" download aria-label="CV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg></a></div>
+</div>
+
+<main>
+<section id="hero">
+  <div>
+    <div class="issue rv"><span data-vi>Hạ Long · Quảng Ninh</span><span data-en>Ha Long · Quang Ninh</span><span data-vi>Hoá học xanh</span><span data-en>Green chemistry</span><span data-vi>Kinh tế tuần hoàn</span><span data-en>Circular economy</span></div>
+    <h1 id="h1"><span class="ln"><span data-vi>Từ bã thải</span><span data-en>From waste</span></span><span class="ln"><span data-vi>đến <em>giá trị.</em></span><span data-en>to <em>value.</em></span></span></h1>
+    <p class="deck rv d2"><span data-vi><b>Hoàng Anh Tuấn</b>, học sinh THPT chuyên Hạ Long, dùng enzyme và hoá học môi trường để biến phụ phẩm nông nghiệp thành sản phẩm có ích cho cộng đồng.</span><span data-en><b>Tuan A. Hoang</b>, a student at Ha Long High School for Gifted Students, uses enzymes and environmental chemistry to turn agricultural waste into products that serve local communities.</span></p>
+    <div class="cta rv d3">
+      <a class="btn fill" href="HoangAnhTuan_CV.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span data-vi>Tải CV</span><span data-en>Download CV</span></a>
+      <a class="btn line" href="#project"><span data-vi>Đọc dự án</span><span data-en>Read the project</span> →</a>
+    </div>
+  </div>
+  <div class="hero-art rv d1" id="art">
+    <svg class="loop" viewBox="0 0 540 540">
+      <circle class="track" cx="270" cy="270" r="228" fill="none" stroke="var(--sage)" stroke-width="1.5"/>
+      <g class="spin"><circle cx="270" cy="270" r="250" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 10"/>
+        <path d="M270 42 l8 -6 v12z" fill="var(--husk)" transform="rotate(20 270 270)"/><path d="M270 42 l8 -6 v12z" fill="var(--husk)" transform="rotate(110 270 270)"/><path d="M270 42 l8 -6 v12z" fill="var(--husk)" transform="rotate(200 270 270)"/><path d="M270 42 l8 -6 v12z" fill="var(--husk)" transform="rotate(290 270 270)"/></g>
+      <g class="node" style="transition-delay:.6s"><circle cx="270" cy="42" r="7" fill="var(--forest)"/><text x="270" y="22" text-anchor="middle" data-t="waste">WASTE</text></g>
+      <g class="node" style="transition-delay:.9s"><circle cx="498" cy="270" r="7" fill="var(--forest)"/><text x="512" y="274" data-t="enzyme">ENZYME</text></g>
+      <g class="node" style="transition-delay:1.2s"><circle cx="270" cy="498" r="7" fill="var(--husk)"/><text x="270" y="526" text-anchor="middle" data-t="oil">OIL</text></g>
+      <g class="node" style="transition-delay:1.5s"><circle cx="42" cy="270" r="7" fill="var(--forest)"/><text x="28" y="274" text-anchor="end" data-t="community">COMMUNITY</text></g>
+    </svg>
+    <figure class="arch"><img src="images/portrait.jpg" alt="Hoàng Anh Tuấn" data-lb="me" data-cap-vi="Hoàng Anh Tuấn trong phòng thí nghiệm" data-cap-en="Tuan A. Hoang in the lab"></figure>
+    <div class="stamp"><div><b>14×</b><span data-vi>HIỆU SUẤT</span><span data-en>YIELD</span></div></div>
+  </div>
+</section>
+
+<div class="marq"><div class="tr"><span>Aqueous enzymatic extraction</span><span>Circular economy</span><span>Microplastics &amp; biofilms</span><span>Black soldier fly</span><span>Grand Environmental Award</span><span>Aqueous enzymatic extraction</span><span>Circular economy</span><span>Microplastics &amp; biofilms</span><span>Black soldier fly</span><span>Grand Environmental Award</span></div></div>
+
+<section id="abstract">
+  <div class="kicker">01 <b data-vi>Tóm tắt</b><b data-en>Abstract</b></div>
+  <div class="abstract">
+    <div>
+      <h2 class="rv"><span data-vi>Hoá học <em>phục vụ</em> nơi mình sống.</span><span data-en>Chemistry <em>in service</em> of home.</span></h2>
+      <p class="dropcap rv d1" data-vi>Mình lớn lên ở Quảng Ninh, nơi phụ phẩm nông nghiệp và rác thải sinh hoạt thường bị bỏ đi. Câu hỏi của mình rất đơn giản: làm sao để những thứ bị coi là “rác” trở thành nguồn giá trị cho chính cộng đồng tạo ra nó?</p>
+      <p class="dropcap rv d1" data-en>I grew up in Quang Ninh, where agricultural by-products and household waste are usually thrown away. My question is simple: how can what we call “waste” become a source of value for the community that produced it?</p>
+      <p class="rv d2" data-vi>Câu hỏi đó dẫn mình tới chiết xuất dầu bằng enzyme từ bã dừa, hai bài báo khoa học về vi nhựa và ấu trùng ruồi lính đen, thực tập tại Khoa Hoá ĐH Bách khoa Hà Nội và các dự án cộng đồng ở vùng cao.</p>
+      <p class="rv d2" data-en>That question led me to enzymatic oil extraction from coconut residue, two papers on microplastics and black soldier fly larvae, an internship at HUST's Department of Chemistry and community projects in the highlands.</p>
+    </div>
+    <div class="figs rv d2">
+      <div><b data-count="0.41" data-dec="2">0</b><span data-vi>mL/g · hiệu suất dầu cao nhất</span><span data-en>mL/g · peak oil yield</span></div>
+      <div><b data-count="14" data-suf="×">0</b><span data-vi>so với mẫu không enzyme</span><span data-en>vs. enzyme-free control</span></div>
+      <div><b data-count="83.54" data-dec="2" data-suf="%">0</b><span data-vi>giảm chất khô bằng BSFL</span><span data-en>dry-matter reduction by BSFL</span></div>
+      <div><b data-count="4">0</b><span data-vi>giải quốc tế năm 2026</span><span data-en>international awards in 2026</span></div>
+      <div><b>8.0</b><span>IELTS · 03/2026</span></div>
+      <div><b data-count="2">0</b><span data-vi>bài báo khoa học (GMR)</span><span data-en>research papers (GMR)</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="kicker">02 <b data-vi>Dự án cá nhân · tác giả chính · 2026</b><b data-en>Personal project · lead author · 2026</b></div>
+  <div class="proj-intro">
+    <h2 class="rv"><span data-vi>Dầu từ <em>bã dừa</em>, không cần máy ép.</span><span data-en>Oil from <em>coconut residue</em>, no press required.</span></h2>
+    <p class="lede rv d1"><span data-vi>Quy trình chiết bằng enzyme trong môi trường nước (AEE) với Cellulase và Papain, ở 55 °C, pH 5,5. Chi phí thấp, không dung môi hữu cơ, phù hợp cho các cơ sở chế biến nhỏ ở địa phương.</span><span data-en>An aqueous enzymatic extraction (AEE) protocol using cellulase and papain at 55 °C and pH 5.5. Low-cost, solvent-free and suited to small local processors.</span></p>
+  </div>
+  <div class="strip-wrap"><div class="strip" id="strip">
+    <figure><div class="curtain rv"><img src="images/lab-05.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Chuẩn bị mẫu bã dừa" data-cap-en="Preparing coconut residue samples"></div><figcaption><b>Fig. 1</b><span data-vi>Chuẩn bị mẫu</span><span data-en>Sample preparation</span></figcaption></figure>
+    <figure><div class="curtain rv"><img src="images/lab-01.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Bổ sung enzyme bằng pipet" data-cap-en="Dosing enzymes by pipette"></div><figcaption><b>Fig. 2</b><span data-vi>Bổ sung enzyme</span><span data-en>Enzyme dosing</span></figcaption></figure>
+    <figure><div class="curtain rv"><img src="images/lab-03.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Điều chỉnh pH bằng đệm citric" data-cap-en="Adjusting pH with citric buffer"></div><figcaption><b>Fig. 3</b>pH 5.5</figcaption></figure>
+    <figure><div class="curtain rv"><img src="images/lab-09.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Theo dõi các bình ủ" data-cap-en="Monitoring incubation flasks"></div><figcaption><b>Fig. 4</b><span data-vi>Ủ enzyme 1–4 giờ</span><span data-en>Incubation, 1–4 h</span></figcaption></figure>
+    <figure><div class="curtain rv"><img src="images/lab-13.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Tách lớp dầu" data-cap-en="Separating the oil layer"></div><figcaption><b>Fig. 5</b><span data-vi>Ly tâm, gạn dầu</span><span data-en>Centrifuge &amp; decant</span></figcaption></figure>
+    <figure><div class="curtain rv"><img src="images/lab-15.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Đo thể tích dầu thu được" data-cap-en="Measuring recovered oil"></div><figcaption><b>Fig. 6</b><span data-vi>Đo hiệu suất</span><span data-en>Measuring yield</span></figcaption></figure>
+    <figure><div class="curtain rv"><img src="images/lab-11.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Chuẩn bị hỗn hợp enzyme" data-cap-en="Preparing the enzyme mix"></div><figcaption><b>Fig. 7</b><span data-vi>Hỗn hợp enzyme</span><span data-en>Enzyme mix</span></figcaption></figure>
+    <figure><div class="curtain rv"><img src="images/lab-07.jpg" alt="" loading="lazy" data-lb="lab" data-cap-vi="Lặp lại thí nghiệm" data-cap-en="Replicate runs"></div><figcaption><b>Fig. 8</b><span data-vi>Lặp lại</span><span data-en>Replicates</span></figcaption></figure>
+  </div><p class="hint"><span data-vi>← kéo ngang để xem thêm →</span><span data-en>← drag to browse →</span></p></div>
+
+  <div class="mech">
+    <div class="rv"><div class="n">i.</div><h4 data-vi>Bã dừa khô</h4><h4 data-en>Dried residue</h4><p data-vi>Phụ phẩm lignocellulose từ cơ sở chế biến dừa địa phương.</p><p data-en>Lignocellulosic by-product from a local coconut processor.</p><span class="tag" data-vi>nguyên liệu</span><span class="tag" data-en>feedstock</span></div>
+    <div class="rv d1"><div class="n">ii.</div><h4>Cellulase</h4><p data-vi>Thuỷ phân cellulose, hemicellulose, phá vỡ thành tế bào.</p><p data-en>Hydrolyses cellulose and hemicellulose, opening cell walls.</p><span class="tag">1000 U/g</span></div>
+    <div class="rv d2"><div class="n">iii.</div><h4>Papain</h4><p data-vi>Phân giải protein, phá nhũ tương, giải phóng giọt dầu.</p><p data-en>Proteolysis breaks the emulsion and frees oil bodies.</p><span class="tag">500 U/g · 3 h</span></div>
+    <div class="rv d3"><div class="n">iv.</div><h4 data-vi>Dầu dừa</h4><h4 data-en>Coconut oil</h4><p data-vi>Thu bằng ly tâm và gạn; giữ lại chất chống oxy hoá nhạy nhiệt.</p><p data-en>Recovered by centrifugation, preserving heat-sensitive antioxidants.</p><span class="tag">0.41 mL/g</span></div>
+  </div>
+
+  <div class="results">
+    <div class="rv" id="bars">
+      <div class="hbars">
+        <div class="hb"><span class="lab" data-vi>Đối chứng (không enzyme)</span><span class="lab" data-en>Control (no enzyme)</span><span class="tr"><i data-w="7"></i></span><span class="v">0.03</span></div>
+        <div class="hb"><span class="lab">Papain 500</span><span class="tr"><i data-w="34"></i></span><span class="v">0.14</span></div>
+        <div class="hb"><span class="lab">Cellulase 500 · 3h</span><span class="tr"><i data-w="49"></i></span><span class="v">0.20</span></div>
+        <div class="hb"><span class="lab">Cell 500 + Pap 500</span><span class="tr"><i data-w="68"></i></span><span class="v">0.28</span></div>
+        <div class="hb top"><span class="lab">Cell 1000 + Pap 500</span><span class="tr"><i data-w="100"></i></span><span class="v">0.41</span></div>
+        <div class="hb"><span class="lab">Cell 500 + Pap 1000</span><span class="tr"><i data-w="90"></i></span><span class="v">0.37</span></div>
+      </div>
+      <p class="figcap"><b>Fig. 9</b> <span data-vi>Hiệu suất dầu (mL/g) theo công thức enzyme; số liệu từ poster dự án. Hai enzyme kết hợp cho hiệu ứng hiệp đồng, cao gấp khoảng 14 lần đối chứng.</span><span data-en>Oil yield (mL/g) by enzyme formulation, from the project poster. The two enzymes act synergistically, about 14× the control.</span></p>
+    </div>
+    <figure class="poster rv d1"><img src="images/poster.jpg" alt="" loading="lazy" data-lb="poster" data-cap-vi="Poster dự án · Optimization of Aqueous Enzymatic Extraction of Oil from Waste Coconut Pulp Residue" data-cap-en="Project poster · Optimization of Aqueous Enzymatic Extraction of Oil from Waste Coconut Pulp Residue"></figure>
+  </div>
+</section>
+
+<section id="research">
+  <div class="kicker">03 <b data-vi>Nghiên cứu khoa học</b><b data-en>Published research</b></div>
+  <h2 class="rv"><span data-vi>Tài liệu <em>tham khảo</em></span><span data-en>Selected <em>references</em></span></h2>
+  <div class="refs">
+    <article class="ref rv"><div class="no">[1]</div>
+      <div><div class="j">Genetics and Molecular Research · 08/2026 · <span data-vi>đồng tác giả</span><span data-en>co-author</span></div>
+        <h3>Biofilm-Mediated Interactions Between Microplastics and Trace Metals in Aquatic Environments: From Sorption and Remobilization to Ecological Risk</h3>
+        <p data-vi>Tổng quan liên ngành về cách màng sinh học trên vi nhựa thay đổi hoá học bề mặt; đề xuất mô hình động cho chu trình hấp phụ – giải hấp kim loại vết và con đường rủi ro sinh thái trong môi trường nước.</p>
+        <p data-en>A multidisciplinary review of how biofilms on microplastics reshape surface chemistry, proposing a dynamic model of trace-metal sorption–desorption cycles and ecological risk pathways in water.</p>
+        <div class="chips"><span>Microplastics</span><span>Trace metals</span><span>Biofilm</span></div></div>
+      <div class="doc"><img src="images/paper-biofilm.jpg" alt="" loading="lazy" data-lb="paper" data-cap-vi="Trang đầu bài báo [1]" data-cap-en="Paper [1], first page"></div></article>
+    <article class="ref rv"><div class="no">[2]</div>
+      <div><div class="j">Genetics and Molecular Research · 2026 · <span data-vi>đồng tác giả</span><span data-en>co-author</span></div>
+        <h3>Effects of Household Organic Waste Substrates on Black Soldier Fly Larval Performance and Bioconversion</h3>
+        <p data-vi>Thí nghiệm thực địa tại 30 hộ gia đình ở Ninh Bình. Rác hỗn hợp giảm chất khô cao nhất (83,54 ± 0,79%); rác động vật cho sinh khối 439,6 g/hộp và protein hoà tan 47,79% DM.</p>
+        <p data-en>Field trial across 30 households in Ninh Binh. Mixed waste cut dry matter most (83.54 ± 0.79%); animal waste gave 439.6 g/container biomass and 47.79% DM soluble protein.</p>
+        <div class="chips"><span>BSFL</span><span>Bioconversion</span><span>30 households</span></div></div>
+      <div class="doc"><img src="images/paper-bsfl.jpg" alt="" loading="lazy" data-lb="paper" data-cap-vi="Trang đầu bài báo [2]" data-cap-en="Paper [2], first page"></div></article>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="kicker">04 <b data-vi>Giải thưởng · di chuột để xem chứng nhận</b><b data-en>Awards · hover to preview certificates</b></div>
+  <h2 class="rv"><span data-vi>Được <em>ghi nhận</em></span><span data-en>Recognition</span></h2>
+  <div class="aw-list">
+    <div class="aw rv" data-peek="images/cert-wico-grand.jpg"><div class="yr">07 / 2026<br>Seoul</div>
+      <div><span class="medal grand">GRAND AWARD + GOLD</span><h3>WICO 2026 · Grand Environmental Award</h3><p data-vi>Phân tích tác động của mưa axit tới khả năng giữ dinh dưỡng của đất nông nghiệp và đề xuất chiến lược quản lý bền vững bằng vật liệu cải tạo bản địa (nhóm 6 thành viên).</p><p data-en>Impact of acid rain on nutrient retention in agricultural soil, with a sustainable management strategy using native amendments (team of six).</p></div>
+      <div class="thumbs"><img src="images/cert-wico-grand.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="WICO 2026 · Grand Environmental Award" data-cap-en="WICO 2026 · Grand Environmental Award"><img src="images/cert-wico-gold.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="WICO 2026 · Gold Award" data-cap-en="WICO 2026 · Gold Award"></div></div>
+    <div class="aw rv" data-peek="images/cert-axgo.jpg"><div class="yr">07 / 2026<br>Korea</div>
+      <div><span class="medal">GOLD</span><h3>AXGO AX Global Olympiad 2026</h3><p data-vi>Nghiên cứu hoạt tính kháng viêm và bào chế hydrogel thảo dược từ <i>Sambucus javanica</i> giảm sưng khớp và cơ.</p><p data-en>Anti-inflammatory activity and an herbal hydrogel from <i>Sambucus javanica</i> for joint and muscular swelling.</p></div>
+      <div class="thumbs"><img src="images/cert-axgo.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="AXGO 2026 · Gold Award" data-cap-en="AXGO 2026 · Gold Award"></div></div>
+    <div class="aw rv" data-peek="images/cert-icpc.jpg"><div class="yr">01 / 2026<br>Korea</div>
+      <div><span class="medal">GOLD</span><h3>International Creative Papers Conference &amp; Olympic (ICPC) 2026</h3><p data-vi>Sign Language Recognition Using Computer Vision: nhận diện ngôn ngữ ký hiệu bằng thị giác máy tính (nhóm 7 thành viên).</p><p data-en>Sign Language Recognition Using Computer Vision (team of seven).</p></div>
+      <div class="thumbs"><img src="images/cert-icpc.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="ICPC 2026 · Gold Award" data-cap-en="ICPC 2026 · Gold Award"></div></div>
+  </div>
+</section>
+
+<section id="profile">
+  <div class="kicker">05 <b data-vi>Học vấn &amp; kinh nghiệm</b><b data-en>Education &amp; experience</b></div>
+  <h2 class="rv"><span data-vi>Nền tảng &amp; <em>thực hành</em></span><span data-en>Foundation &amp; <em>practice</em></span></h2>
+  <div class="two">
+    <div class="card rv"><div class="k" data-vi>Học vấn</div><div class="k" data-en>Education</div><h3 data-vi>THPT chuyên Hạ Long</h3><h3 data-en>Ha Long High School for Gifted Students</h3><p class="sub" data-vi>Hạ Long, Quảng Ninh · 09/2024 – 06/2027</p><p class="sub" data-en>Ha Long, Quang Ninh · Sep 2024 – Jun 2027</p>
+      <div class="skills"><span data-vi>Hoá phân tích</span><span data-en>Analytical chemistry</span><span data-vi>Tổng hợp hữu cơ</span><span data-en>Organic synthesis</span><span data-vi>Phân tích đất</span><span data-en>Soil analysis</span><span data-vi>Chiết xuất sinh học</span><span data-en>Bio-extraction</span><span>OpenCV</span><span data-vi>Mô hình AI</span><span data-en>AI modelling</span></div></div>
+    <div class="card rv d1"><div class="k" data-vi>Chứng chỉ</div><div class="k" data-en>Test score</div><div class="big8"><div class="n">8.0</div><div><h3 style="margin:0">IELTS</h3><p class="sub" style="margin:0" data-vi>Tháng 3/2026 · tiếng Anh học thuật</p><p class="sub" style="margin:0" data-en>March 2026 · academic English</p></div></div></div>
+  </div>
+  <div class="intern">
+    <div class="curtain rv"><img src="images/hust-internship.jpg" alt="" loading="lazy" data-lb="hust" data-cap-vi="Nhận chứng nhận tại Khoa Hoá, ĐH Bách khoa Hà Nội" data-cap-en="Receiving the certificate at HUST Department of Chemistry"></div>
+    <div class="rv d1"><div class="kicker" style="margin-bottom:10px">HUST · 05 / 2025</div>
+      <h3 style="font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1" data-vi>Thực tập sinh nghiên cứu Hoá học</h3><h3 style="font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.1" data-en>Chemistry Research Intern</h3>
+      <p style="color:var(--muted);margin-top:6px" data-vi>Khoa Hoá · Trường Hoá và Khoa học sự sống · ĐH Bách khoa Hà Nội</p><p style="color:var(--muted);margin-top:6px" data-en>Department of Chemistry · School of Chemistry and Life Sciences · HUST</p>
+      <ul><li data-vi>Khoá thực tập “Vật liệu nano – Quang xúc tác – Xử lý môi trường”, được ghi nhận vì đóng góp nổi bật và khả năng lãnh đạo.</li><li data-en>Internship course “Nanomaterials – Photocatalysis – Environmental Remediation”, recognised for outstanding contribution and leadership.</li>
+        <li data-vi>Thực hành thiết bị phòng thí nghiệm, tổng hợp hoá học và kỹ thuật phân tích định lượng.</li><li data-en>Hands-on lab instrumentation, chemical synthesis and quantitative analysis.</li></ul>
+      <a class="certlink" href="images/cert-hust.jpg" data-lb="hust"><img src="images/cert-hust.jpg" alt="" data-cap-vi="Chứng nhận thực tập HUST" data-cap-en="HUST internship certificate"><span data-vi>Xem chứng nhận<small>HUST · 05/2025</small></span><span data-en>View certificate<small>HUST · 05/2025</small></span></a></div>
+  </div>
+  <div class="club rv">
+    <div class="ball" aria-hidden="true"></div>
+    <div><div class="k" data-vi>2025 – NAY · SÁNG LẬP &amp; CHỦ NHIỆM</div><div class="k" data-en>2025 – PRESENT · PRESIDENT &amp; FOUNDER</div><h3>Ha Long Gifted Pickleball Club</h3>
+      <ul><li data-vi>Sáng lập CLB Pickleball đầu tiên của trường; xây dựng quy chế, lịch tập và hệ thống đặt sân cho 40+ thành viên.</li><li data-en>Founded the school's first pickleball club, with guidelines, training schedules and court booking for 40+ members.</li>
+        <li data-vi>Tổ chức buổi tập hàng tuần, workshop kỹ năng và tinh thần thể thao.</li><li data-en>Weekly training and workshops on fundamentals, strategy and sportsmanship.</li>
+        <li data-vi>Điều phối giao hữu liên trường, giải nội bộ; tìm tài trợ dụng cụ và lo hậu cần.</li><li data-en>Inter-school friendlies and club tournaments, equipment sponsorship and logistics.</li></ul></div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="kicker">06 <b data-vi>Cộng đồng</b><b data-en>Community</b></div>
+  <h2 class="rv"><span data-vi>Mang khoa học <em>về bản</em></span><span data-en>Bringing science <em>to the village</em></span></h2>
+  <div class="story">
+    <div class="pics">
+      <div class="a curtain rv"><img src="images/green-horizons-3.jpg" alt="" loading="lazy" data-lb="gh" data-cap-vi="Đoàn Green Horizons Tuyên Quang 2026" data-cap-en="Green Horizons Tuyen Quang 2026 team"></div>
+      <div class="b curtain rv d2"><img src="images/green-horizons-1.jpg" alt="" loading="lazy" data-lb="gh" data-cap-vi="Buổi sinh hoạt tình nguyện" data-cap-en="Volunteer session"></div>
+      <img src="images/green-horizons-2.jpg" alt="" loading="lazy" data-lb="gh" style="display:none" data-cap-vi="Chia sẻ về lối sống xanh" data-cap-en="Green-living talk">
+    </div>
+    <div class="rv d1"><div class="k">2026 · Tuyên Quang</div><h3 data-vi>Green Horizons: điều phối thực địa</h3><h3 data-en>Green Horizons: field coordinator</h3>
+      <p data-vi>Quản lý kênh phân phối và hậu cần thực địa, trao quà phúc lợi và đồ dùng học tập cho 100+ hộ thu nhập thấp; đồng dẫn các buổi truyền thông về phân loại rác và sống xanh cho học sinh tiểu học; hỗ trợ khảo sát nhu cầu và làm việc với chính quyền địa phương.</p>
+      <p data-en>Ran distribution and field logistics, delivering welfare packages and school supplies to 100+ low-income households; co-led sessions on waste sorting and green living for primary pupils; supported needs assessments and liaison with local authorities.</p></div>
+  </div>
+  <div class="story rev" style="margin-top:70px">
+    <div class="pics">
+      <div class="a curtain rv"><img src="images/warm-winter-2.jpg" alt="" loading="lazy" data-lb="ww" data-cap-vi="Mùa Đông Ấm 2025 tại Lao Chải, Tuyên Quang" data-cap-en="Warm Winter 2025 in Lao Chai, Tuyen Quang"></div>
+      <div class="b curtain rv d2"><img src="images/warm-winter-1.jpg" alt="" loading="lazy" data-lb="ww" data-cap-vi="Mang quà tới từng nhà" data-cap-en="Delivering gifts door to door"></div>
+      <div class="c rv d3"><img src="images/cert-warm-winter.jpg" alt="" loading="lazy" data-lb="ww" data-cap-vi="Chứng nhận Nhà hảo tâm · Mùa Đông Ấm 2025" data-cap-en="Donor certificate · Warm Winter 2025"></div>
+      <img src="images/warm-winter-3.jpg" alt="" loading="lazy" data-lb="ww" style="display:none" data-cap-vi="Đoàn tình nguyện cùng người dân" data-cap-en="Volunteers with local residents">
+    </div>
+    <div class="rv d1"><div class="k">01 / 2026 · Lao Chải</div><h3 data-vi>“Mùa Đông Ấm 2025”</h3><h3 data-en>“Warm Winter 2025”</h3>
+      <p data-vi>Cùng các nhóm thiện nguyện vận động, đóng gói và trao quà mùa đông, chăn ấm và đồ dùng học tập cho trẻ em và gia đình khó khăn vùng núi; được ghi nhận là Nhà hảo tâm của chiến dịch.</p>
+      <p data-en>Mobilised, packed and delivered winter packages, blankets and school supplies to children and families in remote mountain areas; recognised as a donor of the campaign.</p></div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="kicker">07 <b data-vi>Thư viện ảnh</b><b data-en>Gallery</b></div>
+  <h2 class="rv"><span data-vi>Sổ tay <em>hình ảnh</em></span><span data-en>Visual <em>notebook</em></span></h2>
+  <div class="filters rv" data-filters="#masonry"><button class="on" data-filter="all"><span data-vi>Tất cả</span><span data-en>All</span></button><button data-filter="lab">Lab</button><button data-filter="aw"><span data-vi>Giải thưởng</span><span data-en>Awards</span></button><button data-filter="act"><span data-vi>Hoạt động</span><span data-en>Activities</span></button></div>
+  <div class="masonry" id="masonry"></div>
+</section>
+
+<section id="contact">
+  <div class="kicker">08 <b data-vi>Liên hệ</b><b data-en>Contact</b></div>
+  <p class="big" id="bigc"><span class="ln"><span data-vi>Cùng khép kín</span><span data-en>Let's close</span></span><span class="ln"><span data-vi><em>vòng tuần hoàn.</em></span><span data-en><em>the loop.</em></span></span></p>
+  <p class="lede rv" style="margin-top:24px"><span data-vi>Sẵn sàng cho hợp tác nghiên cứu, thực tập phòng thí nghiệm và các cuộc thi khoa học.</span><span data-en>Open to research collaboration, lab internships and science competitions.</span></p>
+  <a class="mail rv d1" href="mailto:fisher.hoang@gmail.com">fisher.hoang@gmail.com</a>
+  <div class="cta rv d2"><a class="btn fill" href="HoangAnhTuan_CV.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span data-vi>Tải CV (PDF)</span><span data-en>Download CV (PDF)</span></a></div>
+</section>
+</main>
+<footer><span>© 2026 Hoàng Anh Tuấn</span><span data-vi>Hạ Long · Quảng Ninh</span><span data-en>Ha Long · Quang Ninh</span></footer>
+<div id="peek"><img alt=""></div>
+
+<script>
+/* ===== shared portfolio kit: language, theme, reveal, counters, lightbox, gallery ===== */
+(function(){
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],root=document.documentElement;
+const KEY=root.dataset.key||'pf';
+const store={get:k=>{try{return localStorage.getItem(KEY+'-'+k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(KEY+'-'+k,v)}catch(e){}}};
+window.PF={store};
+/* language */
+function setLang(l){root.lang=l;store.set('lang',l);$$('[data-setlang]').forEach(b=>b.classList.toggle('on',b.dataset.setlang===l));
+  const t=root.dataset['title'+(l==='en'?'En':'Vi')];if(t)document.title=t;document.dispatchEvent(new CustomEvent('pf:lang',{detail:l}))}
+$$('[data-setlang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.setlang)));
+setLang(root.lang==='en'?'en':'vi');
+/* theme */
+function setTheme(t){root.dataset.theme=t;store.set('theme',t);document.dispatchEvent(new CustomEvent('pf:theme',{detail:t}))}
+$$('[data-toggle-theme]').forEach(b=>b.addEventListener('click',()=>setTheme(root.dataset.theme==='dark'?'light':'dark')));
+/* counters */
+function count(el){const t=parseFloat(el.dataset.count),d=+(el.dataset.dec||0),s=el.dataset.suf||'',p=el.dataset.pre||'',st=performance.now();
+  (function f(n){const k=Math.min(1,(n-st)/1600),e=1-Math.pow(1-k,4);el.textContent=p+(t*e).toFixed(d)+s;if(k<1)requestAnimationFrame(f)})(st)}
+window.PF.count=count;
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');
+  if(el.dataset.count)count(el);el.querySelectorAll('[data-count]').forEach(count);
+  el.querySelectorAll('[data-w]').forEach(b=>b.style.width=b.dataset.w+'%');
+  el.dispatchEvent(new CustomEvent('pf:in'));io.unobserve(el)}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+window.PF.observe=el=>io.observe(el);
+function startReveal(){$$('.reveal,.rv').forEach(el=>io.observe(el))}
+window.PF.startReveal=startReveal;
+/* gallery filter */
+$$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const g=b.closest('[data-filters]');g.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('on',x===b));
+  const tgt=$(g.dataset.filters);tgt.querySelectorAll('[data-c]').forEach(f=>f.classList.toggle('hide',b.dataset.filter!=='all'&&!f.dataset.c.split(' ').includes(b.dataset.filter)))}));
+/* lightbox */
+const lb=document.createElement('div');lb.id='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');
+lb.innerHTML='<button class="lb-x" aria-label="Close">×</button><button class="lb-p" aria-label="Previous">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="lb-n" aria-label="Next">›</button><span class="lb-c"></span>';
+document.body.appendChild(lb);
+const li=lb.querySelector('img'),lc=lb.querySelector('figcaption'),ln=lb.querySelector('.lb-c');let grp=[],ix=0;
+const imgOf=el=>el.tagName==='IMG'?el:el.querySelector('img');
+function show(){const im=grp[ix];li.src=im.currentSrc||im.src;lc.textContent=im.dataset['cap'+(root.lang==='en'?'En':'Vi')]||im.alt||'';ln.textContent=(ix+1)+' / '+grp.length;lb.classList.toggle('single',grp.length<2)}
+function open(el){const g=el.dataset.lb;grp=$$('[data-lb="'+g+'"]').filter(x=>!x.closest('.hide')).map(imgOf);ix=Math.max(0,grp.indexOf(imgOf(el)));show();lb.classList.add('open');document.body.style.overflow='hidden'}
+function close(){lb.classList.remove('open');document.body.style.overflow=''}
+function step(d){ix=(ix+d+grp.length)%grp.length;show()}
+document.addEventListener('click',e=>{const z=e.target.closest('[data-lb]');if(z&&!lb.contains(z)){e.preventDefault();open(z)}});
+lb.querySelector('.lb-x').onclick=close;lb.querySelector('.lb-p').onclick=e=>{e.stopPropagation();step(-1)};lb.querySelector('.lb-n').onclick=e=>{e.stopPropagation();step(1)};
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')close()});
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});lb.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)step(d<0?1:-1)});
+})();
+
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const G=[['lab-02','lab','Bổ sung enzyme','Enzyme dosing'],['cert-wico-grand','aw','WICO 2026 · Grand Environmental Award','WICO 2026 · Grand Environmental Award'],['green-horizons-1','act','Green Horizons 2026','Green Horizons 2026'],['lab-04','lab','Trong phòng thí nghiệm','In the lab'],
+['hust-internship','act','Thực tập HUST','HUST internship'],['cert-icpc','aw','ICPC 2026 · Gold','ICPC 2026 · Gold'],['lab-06','lab','Pha dung dịch','Preparing solutions'],['warm-winter-3','act','Mùa Đông Ấm 2025','Warm Winter 2025'],
+['cert-wico-gold','aw','WICO 2026 · Gold','WICO 2026 · Gold'],['lab-08','lab','Ủ enzyme','Incubation'],['poster','lab','Poster dự án','Project poster'],['cert-axgo','aw','AXGO 2026 · Gold','AXGO 2026 · Gold'],
+['lab-10','lab','Theo dõi phản ứng','Monitoring reactions'],['green-horizons-2','act','Green Horizons 2026','Green Horizons 2026'],['cert-hust','act','Chứng nhận HUST','HUST certificate'],['lab-12','lab','Tách dầu','Oil recovery'],
+['warm-winter-1','act','Mang quà tới từng nhà','Door-to-door delivery'],['lab-14','lab','Đo hiệu suất','Measuring yield'],['portrait','lab','Trong phòng thí nghiệm','In the lab'],['cert-warm-winter','act','Nhà hảo tâm Mùa Đông Ấm','Warm Winter donor']];
+$('#masonry').innerHTML=G.map(([f,c,vi,en])=>`<figure data-c="${c}" class="rv"><img src="images/${f}.jpg" loading="lazy" alt="" data-lb="gal" data-cap-vi="${vi}" data-cap-en="${en}"></figure>`).join('');
+
+/* loader */
+let p=0;const ring=$('#lring'),lp=$('#lpct');
+(function t(){p=Math.min(100,p+Math.random()*9+4);ring.style.strokeDashoffset=340*(1-p/100);lp.textContent=Math.round(p)+'%';
+  if(p<100)setTimeout(t,45);else setTimeout(()=>{$('#loader').classList.add('done');$('#h1').classList.add('in');PF.startReveal();PF.observe($('#bigc'));
+    $$('.kicker').forEach(PF.observe)},250)})();
+$('#bars').addEventListener('pf:in',()=>{});
+
+/* loop labels translate */
+const LT={vi:{waste:'BÃ THẢI',enzyme:'ENZYME',oil:'DẦU',community:'CỘNG ĐỒNG'},en:{waste:'WASTE',enzyme:'ENZYME',oil:'OIL',community:'COMMUNITY'}};
+const setLoop=()=>$$('.loop text').forEach(t=>t.textContent=LT[document.documentElement.lang==='en'?'en':'vi'][t.dataset.t]);setLoop();document.addEventListener('pf:lang',setLoop);
+
+/* toc + meter + parallax */
+const links=$$('#toc a'),secs=links.map(a=>$(a.getAttribute('href'))),meter=$('#meter'),arch=$('.arch');
+function onS(){const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;meter.style.width=(y/h*100)+'%';
+  let c=-1;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.4)c=i});links.forEach((a,i)=>a.classList.toggle('active',i===c));
+  if(y<innerHeight)arch.style.transform=`translate(-50%,calc(-50% + ${y*.12}px))`}
+addEventListener('scroll',onS,{passive:true});onS();
+
+/* drag-scroll strip */
+const st=$('#strip');let down=false,sx=0,sl=0,moved=false;
+st.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;down=true;moved=false;sx=e.clientX;sl=st.scrollLeft;st.style.scrollSnapType='none'});
+addEventListener('pointermove',e=>{if(!down)return;const d=e.clientX-sx;if(Math.abs(d)>5)moved=true;st.scrollLeft=sl-d});
+addEventListener('pointerup',()=>{if(down){down=false;st.style.scrollSnapType=''}});
+st.addEventListener('click',e=>{if(moved){e.stopPropagation();e.preventDefault()}},true);
+
+/* award peek */
+const peek=$('#peek'),pi=peek.querySelector('img');let px=0,py=0,cx=0,cy=0;
+$$('.aw').forEach(a=>{a.addEventListener('mouseenter',()=>{pi.src=a.dataset.peek;peek.classList.add('on')});a.addEventListener('mouseleave',()=>peek.classList.remove('on'));
+  a.addEventListener('click',e=>{if(!e.target.closest('[data-lb]'))a.querySelector('[data-lb]').click()})});
+addEventListener('mousemove',e=>{px=e.clientX+140;py=e.clientY});
+(function loop(){cx+=(px-cx)*.15;cy+=(py-cy)*.15;peek.style.left=cx+'px';peek.style.top=cy+'px';requestAnimationFrame(loop)})();
+})();
+</script>
+</body>
+</html>
