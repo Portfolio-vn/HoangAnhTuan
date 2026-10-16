@@ -455,6 +455,9 @@ footer{margin-left:230px;padding:28px clamp(20px,5vw,80px);border-top:1px solid 
   <div class="kicker">04 <b data-vi>Giải thưởng · di chuột để xem chứng nhận</b><b data-en>Awards · hover to preview certificates</b></div>
   <h2 class="rv"><span data-vi>Được <em>ghi nhận</em></span><span data-en>Recognition</span></h2>
   <div class="aw-list">
+    <div class="aw rv" data-peek="images/cert-inova-2026.jpg"><div class="yr">10 / 2026<br>Zagreb</div>
+      <div><span class="medal">GOLD</span><h3>INOVA 2026 · 50th International Invention Show</h3><p data-vi>Phát triển màng bọc thực phẩm phân hủy sinh học tích hợp tinh dầu, có khả năng kháng khuẩn và kháng nấm. Zagreb, Croatia.</p><p data-en>Development of an essential oil-integrated biodegradable food wrap with antimicrobial and antifungal properties. Zagreb, Croatia.</p></div>
+      <div class="thumbs"><img src="images/cert-inova-2026.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="INOVA 2026 · Huy chương Vàng" data-cap-en="INOVA 2026 · Gold Medal"><img src="images/inova-2026-medal.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="Huy chương INOVA 2026, Zagreb" data-cap-en="INOVA 2026 medal, Zagreb"></div></div>
     <div class="aw rv" data-peek="images/cert-wico-grand.jpg"><div class="yr">07 / 2026<br>Seoul</div>
       <div><span class="medal grand">GRAND AWARD + GOLD</span><h3>WICO 2026 · Grand Environmental Award</h3><p data-vi>Phân tích tác động của mưa axit tới khả năng giữ dinh dưỡng của đất nông nghiệp và đề xuất chiến lược quản lý bền vững bằng vật liệu cải tạo bản địa (nhóm 6 thành viên).</p><p data-en>Impact of acid rain on nutrient retention in agricultural soil, with a sustainable management strategy using native amendments (team of six).</p></div>
       <div class="thumbs"><img src="images/cert-wico-grand.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="WICO 2026 · Grand Environmental Award" data-cap-en="WICO 2026 · Grand Environmental Award"><img src="images/cert-wico-gold.jpg" alt="" loading="lazy" data-lb="aw" data-cap-vi="WICO 2026 · Gold Award" data-cap-en="WICO 2026 · Gold Award"></div></div>
@@ -586,7 +589,7 @@ let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:tr
 
 (()=>{
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const G=[['lab-02','lab','Bổ sung enzyme','Enzyme dosing'],['cert-wico-grand','aw','WICO 2026 · Grand Environmental Award','WICO 2026 · Grand Environmental Award'],['green-horizons-1','act','Green Horizons 2026','Green Horizons 2026'],['lab-04','lab','Trong phòng thí nghiệm','In the lab'],
+const G=[['cert-inova-2026','aw','INOVA 2026 · Gold','INOVA 2026 · Gold'],['lab-02','lab','Bổ sung enzyme','Enzyme dosing'],['inova-2026-medal','aw','Huy chương INOVA 2026','INOVA 2026 medal'],['cert-wico-grand','aw','WICO 2026 · Grand Environmental Award','WICO 2026 · Grand Environmental Award'],['green-horizons-1','act','Green Horizons 2026','Green Horizons 2026'],['lab-04','lab','Trong phòng thí nghiệm','In the lab'],
 ['hust-internship','act','Thực tập HUST','HUST internship'],['cert-icpc','aw','ICPC 2026 · Gold','ICPC 2026 · Gold'],['lab-06','lab','Pha dung dịch','Preparing solutions'],['warm-winter-3','act','Mùa Đông Ấm 2025','Warm Winter 2025'],
 ['cert-wico-gold','aw','WICO 2026 · Gold','WICO 2026 · Gold'],['lab-08','lab','Ủ enzyme','Incubation'],['poster','lab','Poster dự án','Project poster'],['cert-axgo','aw','AXGO 2026 · Gold','AXGO 2026 · Gold'],
 ['lab-10','lab','Theo dõi phản ứng','Monitoring reactions'],['green-horizons-2','act','Green Horizons 2026','Green Horizons 2026'],['cert-hust','act','Chứng nhận HUST','HUST certificate'],['lab-12','lab','Tách dầu','Oil recovery'],
